@@ -3,7 +3,7 @@
 
         <div  class="corpologin">
 
-            <h1 class="loginheader loginfontepadrao">Novo Cadastro de Usuário</h1>
+            <h1 class="loginheader loginfontepadrao">Perfil</h1>
             
             <div class="loginlinhaheader"></div>
 
