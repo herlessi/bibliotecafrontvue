@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import Login from '../components/Login.vue'
+import Login from '../componentes/Login.vue'
 export default {
   name: 'HelloWorld',
   components:{

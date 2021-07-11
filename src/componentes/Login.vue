@@ -196,14 +196,19 @@ export default {
 
         recuperarSenha(){
 
-            let dados = {email:"herlessi@gmail.com"}
-            this.$http.post("/usuario/recuperarsenha", dados)
-                .then((resp) => {
-                        this.$alert(resp["statusText"]);
-                })
-                .catch((error) =>{
-                    this.$alert(error.response.data.msg);
-                })
+            if(this.login){
+                let dados = {email:"herlessi@gmail.com"}
+                this.$http.post("/usuario/recuperarsenha", dados)
+                    .then((resp) => {
+                            this.$alert(resp["statusText"]);
+                    })
+                    .catch((error) =>{
+                        this.$alert(error.response.data.msg);
+                    })
+            }else{
+                this.$alert("Informe um email válido");
+            }
+
             
         }
     }

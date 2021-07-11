@@ -1,0 +1,7 @@
+Componente Front:
+    Componente:src/componentes/Login
+    View: src/views/ViewLogin.vue
+    View:src/views/ ViewRecuperarSenha.vue
+Componente Backend: 
+    Controle: Usuario.js
+    Rota: usuario.js
