@@ -10,6 +10,7 @@ const routes = [
     children:[
       { path:'viewlogin',          component: () => import('../views/ViewLogin.vue') },
       { path:'viewrecuperarsenha', component: () => import('../views/ViewRecuperarSenha.vue') },
+      { path:'viewusuario', component: () => import('../views/ViewEditarPerfil.vue') },
     ]
   },
 ]
