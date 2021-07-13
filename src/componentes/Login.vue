@@ -8,13 +8,11 @@
             <div class="loginlinhaheader"></div>
 
             <div class="loginlinha">
-                <label class="loginlabel loginfontepadrao" for="login">Email</label>
-                <input class="logininput" type="text" id="login" name="login" v-model="login">
+                <v-text-field label="Email" class="logininput" type="text" id="login" name="login" v-model="login" />
             </div>
 
             <div class="loginlinha">
-                <label class="loginlabel loginfontepadrao" for="login">Senha</label>
-                <input class="logininput" type="text" id="login" name="login" v-model="senha">
+                <v-text-field label="Senha" class="logininput" type="text" id="login" name="login" v-model="senha"/>
             </div>
 
             <div class="loginlinha">
@@ -38,28 +36,23 @@
             <div class="loginlinhaheader"></div>
 
             <div class="loginlinha">
-                <label class="loginlabel loginfontepadrao" for="nome">Nome</label>
-                <input class="logininput" type="text" id="nome" name="nome" v-model="nome">
+                <v-text-field label="Nome"  class="logininput" type="text" id="nome" name="nome" v-model="nome" />
             </div>
 
             <div class="loginlinha">
-                <label class="loginlabel loginfontepadrao" for="sobrenome">Sobrenome</label>
-                <input class="logininput" type="text" id="sobrenome" name="sobrenome" v-model="sobrenome">
+                <v-text-field label="Sobrenome"  class="logininput" type="text" id="sobrenome" name="sobrenome" v-model="sobrenome" />
             </div>
 
             <div class="loginlinha">
-                <label class="loginlabel loginfontepadrao" for="login">Email</label>
-                <input class="logininput" type="text" id="login" name="login" v-model="login">
+                <v-text-field label="Login"  class="logininput" type="text" id="login" name="login" v-model="login" />
             </div>
 
             <div class="loginlinha">
-                <label class="loginlabel loginfontepadrao" for="login">Senha</label>
-                <input class="logininput" type="text" id="login" name="login" v-model="senha">
+                <v-text-field label="Senha"  class="logininput" type="text" id="login" name="login" v-model="senha" />
             </div>
 
             <div class="loginlinha">
-                <label class="loginlabel loginfontepadrao" for="login">Repetir Senha</label>
-                <input class="logininput" type="text" id="login" name="login" v-model="senhaconfirmacao">
+                <v-text-field label="Repita a Senha"  class="logininput" type="text" id="login" name="login" v-model="senhaconfirmacao" />
             </div>
 
             <div class="loginlinha">
@@ -79,13 +72,11 @@
             <div class="loginlinhaheader"></div>
 
             <div class="loginlinha">
-                <label class="loginlabel loginfontepadrao" for="login">Senha</label>
-                <input class="logininput" type="text" id="login" name="login" v-model="senha">
+                <v-text-field label="Senha" class="logininput" type="text" id="login" name="login" v-model="senha" />
             </div>
 
             <div class="loginlinha">
-                <label class="loginlabel loginfontepadrao" for="login">Repetir Senha</label>
-                <input class="logininput" type="text" id="login" name="login" v-model="senhaconfirmacao">
+                <v-text-field label="Repita a Senha" class="logininput" type="text" id="login" name="login" v-model="senhaconfirmacao" />
             </div>
 
             <div class="loginlinha">

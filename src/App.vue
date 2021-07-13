@@ -1,14 +1,16 @@
 <template>
-  <div id="app">
+  <v-app>
     <router-view/>
-  </div>
+  </v-app>
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  padding:0px!important;
-  margin:0px!important;
-}
+<script>
 
-</style>
+export default {
+  name: 'App',
+
+  data: () => ({
+    //
+  }),
+};
+</script>

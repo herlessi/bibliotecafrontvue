@@ -11,6 +11,8 @@ const routes = [
       { path:'viewlogin',          component: () => import('../views/ViewLogin.vue') },
       { path:'viewrecuperarsenha', component: () => import('../views/ViewRecuperarSenha.vue') },
       { path:'viewusuario', component: () => import('../views/ViewEditarPerfil.vue') },
+      { path:'viewlistagem', component: () => import('../views/ViewListagem.vue') },
+      { path:'listagem', component: () => import('../componentes/Listagem.vue') },
     ]
   },
 ]
