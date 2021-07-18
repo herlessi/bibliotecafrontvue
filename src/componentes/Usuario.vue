@@ -3,33 +3,32 @@
 
         <div  class="corpologin">
 
-            <h1 class="loginheader loginfontepadrao">Perfil</h1>
+            <img style="border-radius: 50%;width:30%;margin-bottom:20px;" src="https://bookingagentinfo.com/wp-content/uploads/2014/12/Travis-Scott-Contact-Information.jpg" />
             
+            <div style="height:100px;display:flex;justify-content:center;align-items:center;width:100%;">
+              <label  for="file-upload-verso" style="height:40px;border-radius:5px;background-color:#00457b;color:white;font-weight:bold;width:100%;display:flex;justify-content:center;align-items:center;">
+                    <span style="font-size:18px;font-weight:bold;color:white;">Trocar Foto</span>
+              </label>    
+              <input id="file-upload-verso" type="file" style="display:none;" accept="image/*"  @change="trocarFoto" />
+            </div>
+
+
             <div class="loginlinhaheader"></div>
 
             <div class="loginlinha">
-                <label class="loginlabel loginfontepadrao" for="nome">Nome</label>
-                <input class="logininput" type="text" id="nome" name="nome" v-model="nome">
+                <v-text-field label="Senha" class="logininput" type="text" id="login" name="login" v-model="nome" />
             </div>
 
             <div class="loginlinha">
-                <label class="loginlabel loginfontepadrao" for="sobrenome">Sobrenome</label>
-                <input class="logininput" type="text" id="sobrenome" name="sobrenome" v-model="sobrenome">
-            </div>
-
-            <!-- <div class="loginlinha">
-                <label class="loginlabel loginfontepadrao" for="login">Email</label>
-                <input class="logininput" type="text" id="login" name="login" v-model="login">
-            </div> -->
-
-            <div class="loginlinha">
-                <label class="loginlabel loginfontepadrao" for="login">Senha</label>
-                <input class="logininput" type="text" id="login" name="login" v-model="senha">
+                <v-text-field label="Senha" class="logininput" type="text" id="login" name="login" v-model="sobrenome" />
             </div>
 
             <div class="loginlinha">
-                <label class="loginlabel loginfontepadrao" for="login">Repetir Senha</label>
-                <input class="logininput" type="text" id="login" name="login" v-model="senhaconfirmacao">
+                <v-text-field label="Senha" class="logininput" type="text" id="login" name="login" v-model="senha" />
+            </div>
+
+            <div class="loginlinha">
+                <v-text-field label="Senha" class="logininput" type="text" id="login" name="login" v-model="senhaconfirmacao" />
             </div>
 
             <div class="loginlinha">
@@ -60,7 +59,8 @@ export default {
             sobrenome:null,
             login:null,
             senha:null,
-            senhaconfirmacao:null
+            senhaconfirmacao:null,
+            pathImg:null
         }
     },
     methods:{
@@ -94,12 +94,78 @@ export default {
             
         },
 
+        trocarFoto(e){
+            const file = e.target.files[0];
+
+            if (!file.type.includes("image/")) {
+                alert("Please select an image file");
+                return;
+            }
+
+            if (typeof FileReader === "function") {
+                const reader = new FileReader();
+
+                reader.onload = (event) => {
+                    this.pathImg = event.target.result;
+                    let index = event.target.result.indexOf(",") + 1;
+                    this.pathImg = event.target.result.substring(index,event.target.result.length);
+                    if(this.pathImg){
+                        this.salvaLogo(file.type)
+                    }
+                };
+                reader.readAsDataURL(file);
+            } else {
+                alert("Sorry, FileReader API not supported");
+            }
+        },
+
+        async salvaLogo(tipoImg) {
+            alert(tipoImg)
+            alert(this.pathImg)
+            // if (!this.pathImg.length > 0) {
+            //     console.log("invalido");
+            //     return;
+            // }
+
+            // let dados =   {
+            //                 "token":'3c8478c895580214e0ff389448054854',
+            //                 "tokenInfo":{"usuario":{"id":localStorage.getItem('userid')} },
+            //                 "tipo" : tipoImg,
+            //                 "nome" : this.ladodocnome,
+            //                 "dados" : this.pathImg,
+            //                 "tabela": "hospede",
+            //                 "fk": this.ladodocfk,
+            //                 "chave": "id",
+            //                 "valor": this.idhospede
+            //             }
+            // await this.$http.post("/imagem/upinsertAuthSimples",dados,
+            //     {timeout:60000 }
+            //     )
+            //     .then((response) => {
+            //         if(response.status == 200){
+            //             if(this.ladodocfk == 'docfrente'){
+            //             this.pathImgFrente = this.pathImg
+            //             }else{
+            //             this.pathImgVerso = this.pathImg
+            //             }
+            //             console.log("Documento Frente Salvo com Sucesso!");
+            //             // this.manipularDirecionamento(response.data.result.imagem[0])
+            //         }else{
+            //             console.log("Não foi possivel salvar Documento Frente!")
+            //         }
+            //     })
+            //     .catch((error) => {
+            //     console.log(error.response);
+            //     });
+        },
+
         
     },
     mounted(){
         if(this.idusuario){
             this.$http.get("/usuario?id="+this.idusuario)
                 .then((resp) => {
+                    // alert(resp.data[0])
                     console.log(resp.data[0])
                     if(resp.status == 200){
                         this.nome = resp.data[0].nome
@@ -167,14 +233,16 @@ export default {
     }
 
     .loginlinha .loginbtnentrar{
-        background-color: #000000;
+        margin-top:10px;
+        width:100%;
+        /* background-color: #000000;
         height:2.5em;
         color:white;
         display:flex;
         justify-content: center;
         align-items: center;
         font-weight: bold;
-        cursor:pointer;
+        cursor:pointer; */
     }
 
     .loginlinha .loginlink{

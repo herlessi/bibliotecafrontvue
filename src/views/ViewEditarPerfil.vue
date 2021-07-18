@@ -23,7 +23,7 @@ export default {
 <style>
     .viewcorpousuario{
         padding-top:0px!important;
-        width: 80vw;
+        width: 50vw;
         max-width: 80vw;
         height: 50vh;
         max-height: 50vh;

@@ -9,6 +9,7 @@ import vuetify from './plugins/vuetify'
 
 // Vue.use( VuejsDatatableFactory );
 
+
 Vue.config.productionTip = false
 
 axios.defaults.baseURL = (process.env.NODE_ENV == 'development') ? 
@@ -18,9 +19,35 @@ Vue.prototype.$http = axios
 
 Vue.use(VueSimpleAlert)
 
+
+//SOCKET.IO
+import VueSocketIO from 'vue-socket.io'
+import SocketIO from "socket.io-client";
+Vue.use(
+  new VueSocketIO({
+      debug: true,
+      connection: SocketIO("http://localhost:3001" + '/servicosocket', { query: {}, autoConnect: false }),
+      vuex: {
+          store,
+          actionPrefix: "SOCKET_",
+          mutationPrefix: "SOCKET_",
+      },
+      // options: [{ transports: ["websocket"] }],
+  })
+);
+
+
 new Vue({
   router,
   store,
   vuetify,
+  sockets: {
+      connect: function() {
+          alert('conectado')
+      },
+      disconnect: function() {
+          alert('nao conectado')
+      },
+  },
   render: h => h(App)
 }).$mount('#app')
