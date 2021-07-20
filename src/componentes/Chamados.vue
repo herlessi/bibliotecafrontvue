@@ -1,8 +1,8 @@
 <template>
     <div>
         
-        <div  class="corpolistagem">
-            <v-card class="p-0 ma-2"  
+        <div  class="corpochamados">
+            <!-- <v-card class="p-0 ma-2"  
                 style="padding:0px!important;width:100%;">
                 <v-row class="ma-0" 
                  style="max-width: 100%;padding:5px 10px;display:flex;align-items:center;justify-content:flex-end;">
@@ -33,14 +33,19 @@
                     </v-btn>
 
                 </v-row>
-            </v-card>
+            </v-card> -->
             <v-data-table v-if="itens.length > 0"
                 :headers="headers"
                 :items="itens"
                 :items-per-page="5"
                 class="elevation-1"
                 style="padding:10px;width:100%;"
-            ></v-data-table>
+                no-data-text="Nenhum Chamado encontrado. "
+            >
+                <template v-slot:item.datacriacao="{ item }">
+                    {{item.datacriacao | formatarDataHora}}
+                </template>
+            </v-data-table>
 
         </div>
 
@@ -69,34 +74,36 @@ export default {
       }
     },
     methods:{
-        carregardados(){
+        carregarchamados(){
+  
+            let idusuario = 43
             console.log("Carregando dados")
-            this.$http.get("/usuario")
-                            .then((resp) => {
+            this.$http.get("/chamados?idusuario="+idusuario)
+                .then((resp) => {
+                   
+                    if(resp.status == 200){
+                        for(var i=0; i < Object.keys(resp.data[0]).length; i++){
 
-                                if(resp.status == 200){
+                            this.headers[i] = { 
+                                text: Object.keys(resp.data[0])[i], 
+                                value: Object.keys(resp.data[0])[i]
+                            }
 
-                                    for(var i=0; i < Object.keys(resp.data[0]).length; i++){
+                        }
 
-                                        this.headers[i] = { 
-                                            text: Object.keys(resp.data[0])[i], 
-                                            value: Object.keys(resp.data[0])[i]
-                                        }
-                                    }
+                        this.itens = resp.data
+                    }else{
+                        this.itens = []
+                    }
 
-                                    this.itens = resp.data
-
-                                }else{
-                                    this.itens = []
-                                }
-                            })
-                            .catch((error) =>{
-                                this.$alert(error);
-                            })
+                })
+                .catch((error) =>{
+                    this.$alert(error);
+                })
         }
     },
     mounted () {
-        this.carregardados()
+        this.carregarchamados()
     },
 }
 </script>
@@ -105,7 +112,7 @@ export default {
 
    
 
-    .corpolistagem{
+    .corpochamados{
         background-color:pink;
         display:flex;
         flex-direction: column;

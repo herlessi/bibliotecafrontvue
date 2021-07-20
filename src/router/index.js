@@ -12,6 +12,7 @@ const routes = [
       { path:'viewrecuperarsenha', component: () => import('../views/ViewRecuperarSenha.vue') },
       { path:'viewusuario', component: () => import('../views/ViewEditarPerfil.vue') },
       { path:'viewlistagem', component: () => import('../views/ViewListagem.vue') },
+      { path:'viewchamados', component: () => import('../views/ViewChamados.vue') },
       { path:'viewsocket', component: () => import('../views/ViewSocket.vue') },
       // { path:'listagem', component: () => import('../componentes/Listagem.vue') },
     ]
